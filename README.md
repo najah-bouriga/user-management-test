@@ -22,31 +22,19 @@ Here is an example of the JSON structure for creating or updating a user:
   "email": "johndoe@example.com",
   "telephone": "+1234567890",
   "birthday": "1990-01-01",
-  "user_role": "User"  // Can be 'Admin' or 'User'
+  "user_role": "User"
 }
 
+```
 ## Fields Description
 
-Below is a detailed description of each field in the user object:
-
-- **`login_username`**: (string, max 100 characters)  
-  The unique username used for logging in.
-
-- **`password`**: (string, max 128 characters)  
-  The user's password.
-
-- **`full_name`**: (string, max 200 characters)  
-  The full name of the user.
-
-- **`email`**: (string)  
-  The user's unique email address. Must be in a valid email format.
-
-- **`telephone`**: (string, max 15 characters)  
-  The user's contact telephone number.
-
-- **`birthday`**: (date)  
-  The user's birthdate. Must be in the format `YYYY-MM-DD`.
-
-- **`user_role`**: (string)  
-  The role assigned to the user. Can be either `'Admin'` or `'User'`. Default is `'User'`.
+| Field Name       | Type      | Description                                                  |
+|------------------|-----------|--------------------------------------------------------------|
+| `login_username`   | string    | Unique username used for logging in (max 100 characters).    |
+| `password`         | string    | User's password, which should be hashed (max 128 characters).|
+| `full_name`        | string    | The full name of the user (max 200 characters).              |
+| `email`            | string    | The user's unique email address (valid email format).        |
+| `telephone`        | string    | Contact telephone number (max 15 characters).               |
+| `birthday`         | date      | The user's birthdate (format: YYYY-MM-DD).                   |
+| `user_role`        | string    | Role assigned to the user, either 'Admin' or 'User'. Default is 'User' |
 

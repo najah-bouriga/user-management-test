@@ -7,7 +7,7 @@ from .serializers import UserSerializer
 
 
 class UserPagination(PageNumberPagination):
-    page_size = 1
+    page_size = 10
     page_size_query_param = 'page_size'  # Allow clients to define page size
     max_page_size = 100  # Max items per page
 

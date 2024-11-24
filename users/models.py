@@ -1,7 +1,7 @@
 from django.db import models
 
 class User(models.Model):
-    login_username = models.CharField(max_length=100, unique=True)
+    user_name = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=128)  # Store encrypted passwords
     full_name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)

@@ -2,9 +2,12 @@ from django.shortcuts import render
 
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
-from .models import User
-from .serializers import UserSerializer
+from .models import UserRole, User
+from .serializers import UserRoleSerializer, UserSerializer
 
+class UserRoleViewSet(ModelViewSet):
+    queryset = UserRole.objects.all()
+    serializer_class = UserRoleSerializer
 
 class UserPagination(PageNumberPagination):
     page_size = 10

@@ -47,7 +47,7 @@ The User Management API supports pagination to efficiently handle large datasets
     "results": [
         {
             "id": 1,
-            "login_username": "johndoe",
+            "user_name": "johndoe",
             "full_name": "John Doe",
             "email": "johndoe@example.com",
             "telephone": "123456789",

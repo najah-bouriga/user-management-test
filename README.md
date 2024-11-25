@@ -27,6 +27,37 @@ Here is an example of the JSON structure for creating or updating a user:
 }
 
 ```
+## Testing Pagination 
+
+The User Management API supports pagination to efficiently handle large datasets.
+
+##### Pagination Overview
+ `Default Page Size`: 10 users per page.
+##### Query Parameters:
+`?page=<page_number>`: Navigate to a specific page.
+
+`?page_size=<size>`: (Optional) Customize the number of users returned per page (maximum allowed size: 100).
+
+##### Access the API Endpoint:
+```json
+{
+    "count": 50,
+    "next": "http://127.0.0.1:8000/api/users/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "login_username": "johndoe",
+            "full_name": "John Doe",
+            "email": "johndoe@example.com",
+            "telephone": "123456789",
+            "birthday": "1990-01-01",
+            "user_role": "Admin"
+        }
+    ]
+}
+```
+
 ## Fields Description
 
 | Field Name  | Type      | Description                                                  |

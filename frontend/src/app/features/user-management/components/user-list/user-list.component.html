@@ -1,0 +1,12 @@
+<ag-grid-angular
+  class="ag-theme-alpine"
+  [rowData]="rowData"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [pagination]="true"
+  [paginationPageSize]="paginationPageSize"
+  [paginationPageSizeSelector]="[10, 25, 50, 100, 200]"
+  style="width: 100%; height: 500px; overflow-y: auto;"
+  (cellClicked)="handleAction($event)"
+  (gridReady)="onGridReady($event)"
+></ag-grid-angular>

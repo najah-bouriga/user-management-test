@@ -69,4 +69,3 @@ The User Management API supports pagination to efficiently handle large datasets
 | `telephone` | string    | Contact telephone number (max 15 characters).               |
 | `birthday`  | date      | The user's birthdate (format: YYYY-MM-DD).                   |
 | `user_role` | string    | Role assigned to the user, either 'Admin' or 'User'. Default is 'User' |
-

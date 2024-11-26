@@ -15,6 +15,8 @@ class User(models.Model):
     telephone = models.CharField(max_length=15)
     birthday = models.DateField()
     role = models.ForeignKey(UserRole, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.full_name

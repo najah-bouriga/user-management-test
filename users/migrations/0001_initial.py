@@ -30,6 +30,8 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=254, unique=True)),
                 ('telephone', models.CharField(max_length=15)),
                 ('birthday', models.DateField()),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('role', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='users.userrole')),
             ],
         ),

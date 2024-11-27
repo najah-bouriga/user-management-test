@@ -5,11 +5,11 @@
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Username:</strong></div>
-    <div class="col-sm-8">{{ user.username }}</div>
+    <div class="col-sm-8">{{ user.user_name }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Full Name:</strong></div>
-    <div class="col-sm-8">{{ user.fullName }}</div>
+    <div class="col-sm-8">{{ user.full_name }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Email:</strong></div>
@@ -21,10 +21,14 @@
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Phone Number:</strong></div>
-    <div class="col-sm-8">{{ user.phone }}</div>
+    <div class="col-sm-8">{{ user.telephone }}</div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm-4"><strong>Birthday Date:</strong></div>
+    <div class="col-sm-8">{{ user.birthday }}</div>
   </div>
   <div class="row">
     <div class="col-sm-4"><strong>Joined Date:</strong></div>
-    <div class="col-sm-8">{{ user.joinedDate | moment:'MMMM Do YYYY' }}</div>
+    <div class="col-sm-8">{{ user.created_at | moment:'MMMM Do YYYY' }}</div>
   </div>
 </div>

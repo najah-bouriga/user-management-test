@@ -39,13 +39,13 @@ export class UserFormComponent implements OnInit {
   private initForm(): void {
     this.userForm = this.fb.group({
       fullName: [
-        this.user.fullName,
+        this.user.full_name,
         [Validators.required, Validators.minLength(2)]
       ],
-      username: [{value: this.user.username, disabled: true}],
+      username: [{value: this.user.user_name, disabled: true}],
       email: [{value: this.user.email, disabled: true}],
       phone: [
-        this.user.phone,
+        this.user.telephone,
         [Validators.required, Validators.pattern(/^\+\d{10,15}$/)]
       ],
       role: [this.user.role, Validators.required]

@@ -42,12 +42,13 @@ export class UserFormComponent implements OnInit {
         this.user.full_name,
         [Validators.required, Validators.minLength(2)]
       ],
-      username: [{value: this.user.user_name, disabled: true}],
-      email: [{value: this.user.email, disabled: true}],
+      username: [{value: this.user.user_name, disabled: !!this.user.id}],
+      email: [{value: this.user.email, disabled: !!this.user.id}],
       phone: [
         this.user.telephone,
         [Validators.required, Validators.pattern(/^\+\d{10,15}$/)]
       ],
+      birthday: [this.user.birthday, Validators.required],
       role: [this.user.role, Validators.required]
     });
   }

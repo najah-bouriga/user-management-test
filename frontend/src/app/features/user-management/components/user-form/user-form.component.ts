@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../../core/models/user.model';
 import {ValidationMessages} from '../../../../core/utils/helpers';
@@ -22,7 +22,11 @@ export class UserFormComponent implements OnInit {
     },
     phone: {
       required: 'Phone number is required',
-      pattern: 'Invalid phone number format. Use international format (e.g., +1234567890)'
+      pattern: 'Please enter a valid phone number, e.g.(+19876543210 or +1 987 654 3210)'
+    },
+    email: {
+      required: 'Email is required',
+      email: 'Please enter a valid email address, e.g., example@domain.com'
     },
     role: {
       required: 'Role is required'
@@ -43,10 +47,10 @@ export class UserFormComponent implements OnInit {
         [Validators.required, Validators.minLength(2)]
       ],
       username: [{value: this.user.user_name, disabled: !!this.user.id}],
-      email: [{value: this.user.email, disabled: !!this.user.id}],
+      email: [{value: this.user.email, disabled: !!this.user.id}, [Validators.required, Validators.email]],
       phone: [
         this.user.telephone,
-        [Validators.required, Validators.pattern(/^\+\d{10,15}$/)]
+        [Validators.required, Validators.pattern(/^\+?[0-9\s\-()]{10,20}$/)]
       ],
       birthday: [this.user.birthday, Validators.required],
       role: [this.user.role, Validators.required]

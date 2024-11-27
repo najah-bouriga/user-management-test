@@ -30,14 +30,14 @@ export class UserListComponent implements OnInit, OnDestroy {
       filter: true
     },
     {
-      field: 'username',
-      headerName: 'Username',
+      field: 'user_name',
+      headerName: 'User Name',
       flex: 1,
       sortable: true,
       filter: true
     },
     {
-      field: 'fullName',
+      field: 'full_name',
       headerName: 'Full Name',
       flex: 1,
       sortable: true,
@@ -59,8 +59,15 @@ export class UserListComponent implements OnInit, OnDestroy {
       filter: true
     },
     {
-      field: 'phone',
+      field: 'telephone',
       headerName: 'Phone Number',
+      flex: 1,
+      sortable: true,
+      filter: true
+    },
+    {
+      field: 'birthday',
+      headerName: 'Birthday',
       flex: 1,
       sortable: true,
       filter: true

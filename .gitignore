@@ -1,28 +1,37 @@
-# Exclude PyCharm's project files
-.idea/
+# Ignore Angular build artifacts
+/frontend/node_modules/
+/frontend/dist/
+/frontend/npm-debug.log
+/frontend/package-lock.json
 
-# Exclude Python bytecode cache
-__pycache__/
+# Ignore Django build artifacts
+/backend/__pycache__/
+/backend/static/
+/backend/media/
+/backend/*.pyc
+/backend/*.pyo
+/backend/*.pyd
 
-# Exclude the SQLite database file
-db.sqlite3
+# Ignore Python virtual environments
+/backend/venv/
+/backend/env/
+/backend/.venv/
 
-# Exclude Python virtual environment
-.venv/
-
-# Exclude compiled files
-*.pyc
-*.pyo
-*.pyd
-
-
-# Exclude log files
-*.log
-
-# Exclude environment variables files
+# Ignore environment variables
 .env
 *.env
 
-# Optional: Add static and media files if applicable
-/static/
-media/
+# Ignore IDE settings
+.idea/
+/.vscode/
+
+# Ignore system files
+.DS_Store
+
+# Ignore log files
+*.log
+
+# Ignore Python virtual environments
+/backend/venv/
+/backend/env/
+

@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <button class="btn btn-primary mb-3" (click)="openModal('create')">Add User</button>
+  <app-user-list
+    (onEdit)="openModal('edit', $event)"
+    (onViewDetails)="openModal('details', $event)"
+  ></app-user-list>
+
+  <app-modal
+    #modal
+    [title]="modalTitle"
+    [showFooter]="modalType !== 'details'"
+    [showSaveButton]="modalType === 'edit' || modalType === 'create'"
+    (onClose)="closeModal()"
+  >
+    <ng-container *ngIf="modalType === 'details'">
+      <app-user-details [user]="selectedUser"></app-user-details>
+    </ng-container>
+
+    <ng-container *ngIf="modalType === 'edit' || modalType === 'create'">
+      <app-user-form [user]="selectedUser"></app-user-form>
+    </ng-container>
+  </app-modal>
+</div>

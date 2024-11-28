@@ -48,5 +48,6 @@ python manage.py runserver
 
 ## API Testing
 To test the API, import the provided **Postman collection**:  
-**[User Management API.postman_collection.json](https://raw.githubusercontent.com/najah-bouriga/user-management-test/refs/heads/main//User%20Management%20API.postman_collection.json)**
+**[User Management API.postman_collection.json](https://raw.githubusercontent.com/najah-bouriga/user-management-test/refs/heads/main/User%20Management%20API.postman_collection.json)**
+
 

@@ -1,0 +1,29 @@
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.action-buttons__button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.action-buttons__button--edit {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.action-buttons__button--view {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.action-buttons__button--delete {
+  background-color: #dc3545;
+  color: #fff;
+}

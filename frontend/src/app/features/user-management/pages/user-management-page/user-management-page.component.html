@@ -1,23 +1,16 @@
-<div class="container mt-4">
-  <button class="btn btn-primary mb-3" (click)="openModal('create')">Add User</button>
+<div class="user-management">
+  <!-- Header with Add User Button -->
+  <div class="user-management__header d-flex justify-content-between align-items-center mb-3">
+    <h2 class="user-management__title">User Management</h2>
+    <button
+      class="user-management__add-button btn btn-primary"
+      (click)="onAddUser()">Add User</button>
+  </div>
+
+  <!-- User List -->
   <app-user-list
-    (onEdit)="openModal('edit', $event)"
-    (onViewDetails)="openModal('details', $event)"
-  ></app-user-list>
-
-  <app-modal
-    #modal
-    [title]="modalTitle"
-    [showFooter]="modalType !== 'details'"
-    [showSaveButton]="modalType === 'edit' || modalType === 'create'"
-    (onClose)="closeModal()"
-  >
-    <ng-container *ngIf="modalType === 'details'">
-      <app-user-details [user]="selectedUser"></app-user-details>
-    </ng-container>
-
-    <ng-container *ngIf="modalType === 'edit' || modalType === 'create'">
-      <app-user-form [user]="selectedUser"></app-user-form>
-    </ng-container>
-  </app-modal>
+    (onEdit)="onEditUser($event)"
+    (onViewDetails)="onViewUserDetails($event)"
+    (onDelete)="onDeleteUser($event)">
+  </app-user-list>
 </div>

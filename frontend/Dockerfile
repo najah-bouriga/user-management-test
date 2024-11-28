@@ -1,5 +1,5 @@
-# Use Node.js for development
 FROM node:20.14.0
+
 WORKDIR /app
 
 RUN npm install -g @angular/cli@18.2.12
@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 4200
 
-CMD ["npm", "run", "start"]
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]

@@ -1,10 +1,8 @@
-# Ignore Angular build artifacts
 /frontend/node_modules/
 /frontend/dist/
 /frontend/npm-debug.log
 /frontend/package-lock.json
 
-# Ignore Django build artifacts
 /backend/__pycache__/
 /backend/static/
 /backend/media/
@@ -12,26 +10,21 @@
 /backend/*.pyo
 /backend/*.pyd
 
-# Ignore Python virtual environments
 /backend/venv/
 /backend/env/
 /backend/.venv/
 
-# Ignore environment variables
 .env
 *.env
 
-# Ignore IDE settings
 .idea/
 /.vscode/
 
-# Ignore system files
 .DS_Store
 
-# Ignore log files
 *.log
 
-# Ignore Python virtual environments
 /backend/venv/
 /backend/env/
 
+*.pyc

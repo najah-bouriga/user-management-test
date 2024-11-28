@@ -1,35 +1,38 @@
-:host {
-  display: block;
-  width: 100%;
-}
-
-.user-list__action-button {
-  background: none;
-  border: none;
-  padding: 4px 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.user-list__action-button:hover {
-  opacity: 0.7;
-}
-
-.user-list__action-cell {
+.user-management {
+  padding: 1rem;
   display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-}
+  flex-direction: column;
+  gap: 1rem;
 
-.ag-theme-alpine .user-list__action-cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  &__add-button {
+    align-self: flex-start;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+  }
 
-.ag-theme-alpine .ag-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  &__grid-wrapper {
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    border-radius: 5px;
+  }
+
+  &__grid {
+    width: 100%; // Ensure the grid occupies all available width
+    border-radius: 5px;
+
+    .ag-header-cell {
+      background-color: #f8f9fa;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .ag-row {
+      &:hover {
+        background-color: #e9ecef;
+      }
+    }
+  }
 }

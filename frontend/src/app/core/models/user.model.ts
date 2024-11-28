@@ -1,3 +1,5 @@
+import {Role} from './role.model';
+
 export interface User {
     id: number;
     user_name: string;
@@ -5,7 +7,7 @@ export interface User {
     password: any;
     email: string;
     telephone: string;
-    role: number;
+    role: Role;
     created_at: Date,
     updated_at: Date,
     birthday: Date;

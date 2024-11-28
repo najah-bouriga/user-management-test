@@ -6,11 +6,25 @@ services:
       - "4200:4200"
     stdin_open: true
     tty: true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    networks:
+      - app-network
 
   backend:
     build:
       context: ./backend
     ports:
-      - "8000:8000"  # Ensure backend is exposed on 8000
+      - "8000:8000"
     stdin_open: true
     tty: true
+    volumes:
+      - ./backend:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

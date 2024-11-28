@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {
   ColDef,
   GridApi,
@@ -10,9 +10,9 @@ import {
 } from 'ag-grid-enterprise';
 import 'ag-grid-enterprise';
 
-import { User } from '../../../../core/models/user.model';
-import { UserService } from '../../../../core/services/user.service';
-import { Subject } from 'rxjs';
+import {User} from '../../../../core/models/user.model';
+import {UserService} from '../../../../core/services/user.service';
+import {Subject} from 'rxjs';
 import {ActionCellRendererComponent} from './action-cell-renderer/action-cell-renderer.component';
 
 @Component({
@@ -20,7 +20,7 @@ import {ActionCellRendererComponent} from './action-cell-renderer/action-cell-re
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent implements OnInit, OnDestroy {
+export class UserListComponent implements OnInit {
   @Output() onEdit = new EventEmitter<User>();
   @Output() onViewDetails = new EventEmitter<User>();
   @Output() onDelete = new EventEmitter<User>();
@@ -28,21 +28,44 @@ export class UserListComponent implements OnInit, OnDestroy {
   public rowModelType: RowModelType = 'serverSide';
   public context: any;
   public frameworkComponents: any;
-
-  private destroy$ = new Subject<void>();
-  private gridApi!: GridApi;
+  public gridApi!: GridApi;
 
   paginationPageSize = 10;
-  private versionCounter = 1;
+  paginationPageSizeOptions = [10, 25, 50, 100, 200];
 
   columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID', flex: 0.5, minWidth: 70 },
-    { field: 'user_name', headerName: 'User Name', flex: 1 },
-    { field: 'full_name', headerName: 'Full Name', flex: 1 },
-    { field: 'email', headerName: 'Email', flex: 1 },
-    { field: 'role', headerName: 'Role', flex: 0.5, minWidth: 120 },
-    { field: 'telephone', headerName: 'Phone Number', flex: 1 },
-    { field: 'birthday', headerName: 'Birthday', flex: 1 },
+    { field: 'id', headerName: 'ID', flex: 0.5, minWidth: 70, sortable: true, filter: 'agNumberColumnFilter' },
+    { field: 'user_name', headerName: 'User Name', flex: 1, sortable: true, filter: 'agTextColumnFilter' },
+    { field: 'full_name', headerName: 'Full Name', flex: 1, sortable: true, filter: 'agTextColumnFilter' },
+    { field: 'email', headerName: 'Email', flex: 1, sortable: true, filter: 'agTextColumnFilter' },
+    {
+      field: 'role',
+      headerName: 'Role',
+      flex: 0.5,
+      minWidth: 120,
+      sortable: true,
+      filter: 'agTextColumnFilter',
+      valueGetter: (params) => params.data.role?.name || 'No Role',
+    },
+    { field: 'telephone', headerName: 'Phone Number', flex: 1, sortable: true, filter: 'agTextColumnFilter' },
+    {
+      field: 'birthday',
+      headerName: 'Birthday',
+      flex: 1,
+      sortable: true,
+      filter: 'agDateColumnFilter',
+      valueFormatter: (params) =>
+        params.value ? new Date(params.value).toLocaleDateString() : '',
+    },
+    {
+      field: 'created_at',
+      headerName: 'Created At',
+      flex: 1,
+      sortable: true,
+      filter: 'agDateColumnFilter',
+      valueFormatter: (params) =>
+        params.value ? new Date(params.value).toLocaleDateString() : '',
+    },
     {
       flex: 0.5,
       minWidth: 150,
@@ -60,32 +83,21 @@ export class UserListComponent implements OnInit, OnDestroy {
   ];
 
   defaultColDef: ColDef = {
+    resizable: true,
     sortable: true,
     filter: true,
-    resizable: true,
-    minWidth: 100,
+    flex: 1,
+    minWidth: 100
   };
 
   constructor(private userService: UserService) {
     this.frameworkComponents = {
       actionCellRenderer: ActionCellRendererComponent,
     };
-    this.context = { componentParent: this };
+    this.context = {componentParent: this};
   }
 
   ngOnInit(): void {
-    this.startVersionCounter();
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  private startVersionCounter() {
-    setInterval(() => {
-      this.versionCounter += 1;
-    }, 4000);
   }
 
   onGridReady(params: any): void {
@@ -97,27 +109,18 @@ export class UserListComponent implements OnInit, OnDestroy {
   private getServerSideDatasource(): IServerSideDatasource {
     return {
       getRows: (params: IServerSideGetRowsParams) => {
-        console.log('[Datasource] - rows requested by grid:', params.request);
-
         const { page, pageSize } = this.mapGridParamsToRequest(params);
         const filterParams = this.mapGridFilters(params);
         const sortParams = this.mapGridSorting(params);
 
-        // Call your service to get data
         this.userService.getAllUsers(page, pageSize, filterParams, sortParams).subscribe({
           next: (response) => {
-            const processedData = response.results.map((rowData: any) => ({
-              ...rowData,
-              version: `${this.versionCounter} - ${this.versionCounter} - ${this.versionCounter}`,
-            }));
-
             params.success({
-              rowData: processedData,
-              rowCount: response.count, // Use 'count' from your API response
+              rowData: response.results,
+              rowCount: response.count,
             });
           },
-          error: (error) => {
-            console.error('Error fetching data', error);
+          error: () => {
             params.fail();
           },
         });
@@ -126,27 +129,30 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   private mapGridParamsToRequest(params: IServerSideGetRowsParams): { page: number; pageSize: number } {
-    const startRow = params.request.startRow ?? 0;
-    const endRow = params.request.endRow ?? 0;
-    const pageSize = endRow - startRow;
+    const startRow = params.request.startRow || 0;
+    const endRow = params.request.endRow || 0;
+    const pageSize = endRow - startRow || 10;
     const page = Math.floor(startRow / pageSize) + 1;
 
     return { page, pageSize };
   }
 
-  private mapGridFilters(params: IServerSideGetRowsParams): any {
-    const filterModel = params.request.filterModel;
-
-    if (!filterModel) {
-      return {};
-    }
-
-    const filters: { [key: string]: any } = {};
+  private mapGridFilters(params: IServerSideGetRowsParams): Record<string, any> {
+    const filterModel = params.request.filterModel || {};
+    const filters: Record<string, any> = {};
 
     Object.keys(filterModel).forEach((field) => {
       const filter = (filterModel as any)[field];
-      if (filter && 'filter' in filter) {
-        filters[field] = filter.filter; // Safe access to filter property
+      if (filter.filterType === 'text') {
+        filters[field] = filter.filter;
+      } else if (filter.filterType === 'date') {
+        if (filter.type === 'equals') {
+          filters[field] = filter.dateFrom;
+        } else if (filter.type === 'lessThan') {
+          filters[`${field}__lte`] = filter.dateFrom;
+        } else if (filter.type === 'greaterThan') {
+          filters[`${field}__gte`] = filter.dateFrom;
+        }
       }
     });
 
@@ -154,19 +160,20 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   private mapGridSorting(params: IServerSideGetRowsParams): string[] {
-    const sortModel = params.request.sortModel;
-    const sorts: string[] = [];
+    const sortModel = params.request.sortModel || [];
+    const sortParams: string[] = [];
 
-    for (const sort of sortModel) {
-      const direction = sort.sort === 'asc' ? '' : '-';
-      sorts.push(`${direction}${sort.colId}`);
-    }
+    sortModel.forEach((sort) => {
+      if (sort.colId === 'role') {
+        sortParams.push(sort.sort === 'desc' ? '-role__name' : 'role__name');
+      } else if (['created_at', 'updated_at', 'birthday'].includes(sort.colId)) {
+        sortParams.push(sort.sort === 'desc' ? `-${sort.colId}` : sort.colId);
+      } else {
+        sortParams.push(sort.sort === 'desc' ? `-${sort.colId}` : sort.colId);
+      }
+    });
 
-    return sorts;
-  }
-
-  onStoreRefreshed(event: any) {
-    console.log('Refresh finished for store with route:', event.route);
+    return sortParams;
   }
 
   public onEditUser(user: User): void {
@@ -180,7 +187,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   public onDeleteUser(user: User): void {
     this.userService.deleteUser(user.id).subscribe({
       next: () => {
-        this.gridApi.refreshServerSide({ purge: true });
+        this.gridApi.refreshServerSide({purge: true});
       },
       error: (error) => console.error('Error deleting user:', error),
     });
@@ -188,6 +195,6 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     const data = params.data;
-    return data.id;
+    return `${data.id}`;
   };
 }

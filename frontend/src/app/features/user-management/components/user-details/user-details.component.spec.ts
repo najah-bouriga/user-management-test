@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserAgePieChartComponent } from './user-age-pie-chart.component';
+import { UserDetailsComponent } from './user-details.component';
 
-describe('UserAgePieChartComponent', () => {
-  let component: UserAgePieChartComponent;
-  let fixture: ComponentFixture<UserAgePieChartComponent>;
+describe('UserDetailsComponent', () => {
+  let component: UserDetailsComponent;
+  let fixture: ComponentFixture<UserDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserAgePieChartComponent]
+      imports: [UserDetailsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserAgePieChartComponent);
+    fixture = TestBed.createComponent(UserDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

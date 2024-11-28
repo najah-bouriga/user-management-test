@@ -1,10 +1,9 @@
-// action-cell-renderer.component.ts
-import {Component} from '@angular/core';
-import {ICellRendererAngularComp} from 'ag-grid-angular';
+import { Component } from '@angular/core';
+import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 @Component({
   selector: 'app-action-cell-renderer',
-  standalone:true,
+  standalone: true,
   templateUrl: './action-cell-renderer.component.html',
   styleUrls: ['./action-cell-renderer.component.scss']
 })
@@ -20,14 +19,14 @@ export class ActionCellRendererComponent implements ICellRendererAngularComp {
   }
 
   onEdit() {
-    this.params.context.componentParent.onEditUser(this.params.data);
+    this.params.context.componentParent.onEditUser(this.params.data); // Trigger edit in parent
   }
 
   onViewDetails() {
-    this.params.context.componentParent.onViewUserDetails(this.params.data);
+    this.params.context.componentParent.onViewUserDetails(this.params.data); // Trigger view details in parent
   }
 
   onDelete() {
-    this.params.context.componentParent.onDeleteUser(this.params.data);
+    this.params.context.componentParent.onDeleteUser(this.params.data); // Trigger delete in parent
   }
 }

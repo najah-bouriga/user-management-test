@@ -1,0 +1,31 @@
+.user-details {
+  .user-details__section {
+    margin-bottom: 20px;
+
+    .section-title {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .info-text {
+      color: #666;
+      font-size: 14px;
+      margin-top: 5px;
+      line-height: 1.5;
+    }
+
+    .row {
+      margin-bottom: 10px;
+    }
+
+    .col-md-6 {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}

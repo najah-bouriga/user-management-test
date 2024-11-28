@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "77fd4721-8202-48e4-930a-4c91f36f5068",
+		"name": "User Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4772862"
+	},
+	"item": [
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Get All Roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/roles/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"roles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator role\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/roles/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"roles",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "?ordering=birthday&page=1&page_size=10",
+							"query": [
+								{
+									"key": "ordering",
+									"value": "birthday"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_name\": \"jdoe\",\n  \"full_name\": \"John Doe\",\n  \"email\": \"jdoe@example.com\",\n  \"telephone\": \"1234567890\",\n  \"birthday\": \"1990-01-01\",\n  \"role_id\": 1,\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"full_name\": \"Johnathan Doe\",\n  \"email\": \"jdoe_updated@example.com\",\n  \"telephone\": \"0987654321\",\n  \"birthday\": \"1990-02-01\",\n  \"role_id\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/users/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "User Analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/analytics/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"analytics",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

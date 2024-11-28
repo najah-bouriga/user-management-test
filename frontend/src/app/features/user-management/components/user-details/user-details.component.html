@@ -1,40 +1,68 @@
-<h4 mat-dialog-title>User Details</h4>
-<div mat-dialog-content>
-<div class="container">
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>ID:</strong></div>
-    <div class="col-sm-8">{{ data.id }}</div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>Username:</strong></div>
-    <div class="col-sm-8">{{ data.user_name }}</div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>Full Name:</strong></div>
-    <div class="col-sm-8">{{ data.full_name }}</div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>Email:</strong></div>
-    <div class="col-sm-8">{{ data.email }}</div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>Role:</strong></div>
-    <div class="col-sm-8">{{ data.role }}</div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>Phone Number:</strong></div>
-    <div class="col-sm-8">{{ data.telephone }}</div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-sm-4"><strong>Birthday Date:</strong></div>
-    <div class="col-sm-8">{{ data.birthday }}</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4"><strong>Joined Date:</strong></div>
-    <div class="col-sm-8">{{ data.created_at | moment:'MMMM Do YYYY' }}</div>
+<div class="modal-header">
+  <h5 class="modal-title">User Details</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+</div>
+
+<div class="modal-body">
+  <div class="user-details">
+
+    <div class="user-details__section">
+      <h5 class="section-title">Personal Information</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Full Name:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.full_name) ? user?.full_name : 'Not Available' }}</p>
+        </div>
+        <div class="col-md-6">
+          <strong>Username:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.user_name) ? user?.user_name : 'Not Available' }}</p>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Birthday:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.birthday) ? (user?.birthday | date: 'fullDate') : 'Not Available' }}</p>
+        </div>
+        <div class="col-md-6">
+          <strong>Role:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.role?.name) ? user?.role?.name : 'No Role Assigned' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-details__section">
+      <h5 class="section-title">Contact Information</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Email:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.email) ? user?.email : 'Not Available' }}</p>
+        </div>
+        <div class="col-md-6">
+          <strong>Phone Number:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.telephone) ? user?.telephone : 'Not Available' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Information Section -->
+    <div class="user-details__section">
+      <h5 class="section-title">Account Information</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <strong>Created At:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.created_at) ? (user?.created_at | date: 'short') : 'Not Available' }}</p>
+        </div>
+        <div class="col-md-6">
+          <strong>Updated At:</strong>
+          <p class="info-text">{{ isFieldAvailable(user?.updated_at) ? (user?.updated_at | date: 'short') : 'Not Available' }}</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
-</div>
-<div mat-dialog-actions align="end">
-  <button mat-button (click)="onClose()">Close</button>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Close</button>
 </div>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "angular-aggrid-amcharts": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,12 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "dist/angular-aggrid-amcharts",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js",
-              "@angular/localize/init"
+              "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -33,13 +32,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -69,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "frontend:build:production"
+              "buildTarget": "angular-aggrid-amcharts:build:production"
             },
             "development": {
-              "buildTarget": "frontend:build:development"
+              "buildTarget": "angular-aggrid-amcharts:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,8 +81,7 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
+              "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
@@ -99,13 +94,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }

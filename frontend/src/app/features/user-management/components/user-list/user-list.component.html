@@ -1,20 +1,19 @@
-<div class="user-list">
+<div class="user-management__grid-wrapper">
   <ag-grid-angular
-    class="user-list__grid ag-theme-alpine"
-    style="width: 100%; height: 600px;"
+    class="user-management__grid ag-theme-alpine"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [getRowId]="getRowId"
     [rowModelType]="rowModelType"
     [suppressAggFuncInHeader]="true"
-    [paginationPageSizeSelector]="[10, 25, 50, 100, 200]"
-    (storeRefreshed)="onStoreRefreshed($event)"
+    [paginationPageSizeSelector]="paginationPageSizeOptions"
     (gridReady)="onGridReady($event)"
     [context]="context"
     [components]="frameworkComponents"
     [pagination]="true"
     [paginationPageSize]="paginationPageSize"
     [cacheBlockSize]="paginationPageSize"
+    style="width: 100%; height: 600px; border-radius: 5px;"
   >
   </ag-grid-angular>
 </div>

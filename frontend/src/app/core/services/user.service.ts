@@ -8,7 +8,7 @@ import {User} from '../models/user.model';
   providedIn: 'root',
 })
 export class UserService {
-  private readonly apiUrl = 'http://localhost:8000/api/users'; // Replace with your actual API URL
+  private readonly apiUrl = 'http://localhost:8000/api/users/'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {
   }

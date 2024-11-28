@@ -9,7 +9,6 @@ import {
   GetRowIdParams,
 } from 'ag-grid-enterprise';
 import 'ag-grid-enterprise';
-import { AgGridAngular } from 'ag-grid-angular'; // Import AgGridAngular
 
 import { User } from '../../../../core/models/user.model';
 import { UserService } from '../../../../core/services/user.service';

@@ -2,6 +2,7 @@ export interface User {
     id: number;
     user_name: string;
     full_name: string;
+    password: any;
     email: string;
     telephone: string;
     role: number;

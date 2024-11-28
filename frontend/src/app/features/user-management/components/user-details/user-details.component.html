@@ -1,34 +1,40 @@
+<h4 mat-dialog-title>User Details</h4>
+<div mat-dialog-content>
 <div class="container">
   <div class="row mb-3">
     <div class="col-sm-4"><strong>ID:</strong></div>
-    <div class="col-sm-8">{{ user.id }}</div>
+    <div class="col-sm-8">{{ data.id }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Username:</strong></div>
-    <div class="col-sm-8">{{ user.user_name }}</div>
+    <div class="col-sm-8">{{ data.user_name }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Full Name:</strong></div>
-    <div class="col-sm-8">{{ user.full_name }}</div>
+    <div class="col-sm-8">{{ data.full_name }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Email:</strong></div>
-    <div class="col-sm-8">{{ user.email }}</div>
+    <div class="col-sm-8">{{ data.email }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Role:</strong></div>
-    <div class="col-sm-8">{{ user.role }}</div>
+    <div class="col-sm-8">{{ data.role }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Phone Number:</strong></div>
-    <div class="col-sm-8">{{ user.telephone }}</div>
+    <div class="col-sm-8">{{ data.telephone }}</div>
   </div>
   <div class="row mb-3">
     <div class="col-sm-4"><strong>Birthday Date:</strong></div>
-    <div class="col-sm-8">{{ user.birthday }}</div>
+    <div class="col-sm-8">{{ data.birthday }}</div>
   </div>
   <div class="row">
     <div class="col-sm-4"><strong>Joined Date:</strong></div>
-    <div class="col-sm-8">{{ user.created_at | moment:'MMMM Do YYYY' }}</div>
+    <div class="col-sm-8">{{ data.created_at | moment:'MMMM Do YYYY' }}</div>
   </div>
+</div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">Close</button>
 </div>

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { User } from '../../../../core/models/user.model';
+import {Component, Inject, Input} from '@angular/core';
+import {User} from '../../../../core/models/user.model';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-details',
@@ -7,5 +8,13 @@ import { User } from '../../../../core/models/user.model';
   styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent {
-  @Input() user!: User; // Use the non-null assertion operator
+  constructor(
+    private dialogRef: MatDialogRef<UserDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: User
+  ) {
+  }
+
+  onClose(): void {
+    this.dialogRef.close();
+  }
 }

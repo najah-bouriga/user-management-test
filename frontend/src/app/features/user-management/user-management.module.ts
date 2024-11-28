@@ -8,6 +8,11 @@ import {AgGridAngular} from 'ag-grid-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserManagementPageComponent} from './pages/user-management-page/user-management-page.component';
 import {SharedModule} from '../../shared/shared.module';
+import {MatDialogActions, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +28,12 @@ import {SharedModule} from '../../shared/shared.module';
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
+    MatDialogActions,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatInputModule,
+    MatSelectModule,
   ],
 })
 export class UserManagementModule {}

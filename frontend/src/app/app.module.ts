@@ -12,6 +12,8 @@ import { UserManagementModule } from './features/user-management/user-management
 import { AnalyticsModule } from './features/analytics/analytics.module';
 import {AppRoutes} from './app.routes';
 import {HttpClientModule} from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,9 @@ import {HttpClientModule} from '@angular/common/http';
     SharedModule, // Shared module
     UserManagementModule, // Feature module: User Management
     AnalyticsModule, // Feature module: Analytics
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatDialogModule, // Add this
   ],
   providers: [], // Add services or global providers here if necessary
   bootstrap: [AppComponent], // Bootstrap the root component

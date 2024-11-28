@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.action-button {
+.user-list__action-button {
   background: none;
   border: none;
   padding: 4px 8px;
@@ -11,25 +11,25 @@
   transition: all 0.2s;
 }
 
-.action-button:hover {
+.user-list__action-button:hover {
   opacity: 0.7;
 }
 
-.view-button {
-  color: #119117;
-}
-
-.edit-button {
-  color: #1064d1;
-}
-
-.delete-button {
-  color: #d32a1d;
-}
-
-.action-cell {
+.user-list__action-cell {
   display: flex;
   gap: 8px;
   justify-content: center;
   align-items: center;
+}
+
+.ag-theme-alpine .user-list__action-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ag-theme-alpine .ag-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -40,6 +40,12 @@ export class UserFormComponent implements OnInit {
     this.initForm();
   }
 
+  ngOnChanges() {
+    if (this.user && this.userForm) {
+      this.userForm.patchValue(this.user);
+    }
+  }
+
   private initForm(): void {
     this.userForm = this.fb.group({
       fullName: [
@@ -72,6 +78,7 @@ export class UserFormComponent implements OnInit {
         ...this.user,
         ...this.userForm.getRawValue()
       };
+
       this.formSubmit.emit(updatedUser);
     } else {
       this.markFormGroupTouched(this.userForm);

@@ -18,3 +18,10 @@
 .custom-navbar .navbar-nav .nav-link.active {
   color: #fff; /* Active link in white */
 }
+
+@media (max-width: 768px) {
+  .ag-theme-alpine .ag-cell[col-id="actions"] {
+    display: flex; /* Ensure the cell is displayed */
+    width: 180px; /* Maintain fixed width */
+  }
+}

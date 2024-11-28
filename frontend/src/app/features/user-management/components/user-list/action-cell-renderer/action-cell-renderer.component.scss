@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+
+    &__button {
+      width: 100%;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+
+    &__button:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

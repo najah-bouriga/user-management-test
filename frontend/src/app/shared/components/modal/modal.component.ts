@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {User} from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +14,7 @@ export class ModalComponent {
   @Input() showFooter: boolean = true; // Show/hide footer
   @Input() showSaveButton: boolean = true; // Show/hide Save button
 
-  @Output() onSave = new EventEmitter<void>(); // Emit Save event
+  @Output() onSave = new EventEmitter<any>(); // Emit Save event
   @Output() onClose = new EventEmitter<void>(); // Emit Close event
 
   private modalService = inject(NgbModal); // Inject NgbModal service
@@ -29,8 +30,7 @@ export class ModalComponent {
 
   // Save action
   save() {
-    this.onSave.emit(); // Emit Save event
-    this.closeModal(); // Close the modal
+    this.onSave.emit();
   }
 
   // Close action

@@ -17,7 +17,7 @@
     </ng-container>
 
     <ng-container *ngIf="modalType === 'edit' || modalType === 'create'">
-      <app-user-form [user]="selectedUser"></app-user-form>
+      <app-user-form [user]="selectedUser" (formSubmit)="handleSave($event)"></app-user-form>
     </ng-container>
   </app-modal>
 </div>

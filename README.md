@@ -1,7 +1,3 @@
-Here’s a simplified and clearer version of your **README.md**:
-
----
-
 # User Management Interface
 
 This is a full-stack app for **user management** featuring **CRUD** operations. It uses **Angular** for the frontend, **Django REST Framework** for the backend, and **Docker** for containerization. **SQLite** is used for the database during testing.
